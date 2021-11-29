@@ -58,9 +58,14 @@ The RocketQA development tool supports two types of models, ERNIE-based dual enc
 
 Returns the names of the available RocketQA models. 
 
+- [ ] comments by amber: 需要对这些模型进行简单的介绍吗
+```
+dict_keys(['v1_marco_de', 'v1_marco_ce', 'v1_nq_de', 'v1_nq_ce', 'pair_marco_de', 'pair_nq_de', 'v2_marco_de', 'v2_marco_ce', 'v2_nq_de', 'zh_dureader_de', 'zh_dureader_ce'])
+```
+
 #### `rocketqa.load_model(model, use_cuda=False, device_id=0, batch_size=1)`
 
-Returns the model specified by the input parameter. Both dual encoder and cross encoder can be initialized by this method. With input parameter, developers can load RocketQA models returned by "available_models()" or their own checkpoints.
+Returns the model specified by the input parameter. The RocketQA models returned by "available_models()" or your own checkpoint specified by a path are supported; both dual encoder and cross encoder can be initialized using this method. 
 
 ---
 
@@ -72,7 +77,7 @@ Given a list of queries, returns their representation vectors encoded by model.
 
 #### `model.encode_para(para: List[str], )`
 
-Given a list of passages and their corresponding titles (optional), returns their representations vectors encoded by model.
+Given a list of passages and their titles (optional), returns their representations vectors encoded by model.
 
 #### `model.matching(query: List[str], para: List[str], )`
 
