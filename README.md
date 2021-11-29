@@ -51,7 +51,6 @@ docker pull rocketqa_docker_name
 docker run -it rocketqa_docker_name
 ```
   
-[:exclamation:]
 ## API
 The RocketQA development tool supports two types of models, ERNIE-based dual-encoder for answer retrieval and ERNIE-based cross-encoder for answer re-ranking. And the development tool provides the following methods:
 
