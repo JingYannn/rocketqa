@@ -27,7 +27,7 @@ RocketQA focuses on improving the dense contexts retrieval stage, and propose th
 ## Installation
 
 ### Install package
-First, install [PaddlePaddle](https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/install/pip/linux-pip.html).
+Firstly, install [PaddlePaddle](https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/install/pip/linux-pip.html).
 ```bash
 # GPU version:
 $ pip install paddlepaddle-gpu
