@@ -110,6 +110,7 @@ A short example about how to use RocketQA.
 
 ###  Run RocketQA Model
 To run RocketQA models, developers should set the parameter `model` in 'load_model()' method with RocketQA model name return by 'available_models()' method. 
+
 [:exclamation:] inner_products = dual_encoder.matching(query=query_list, para=para_list) 这个function 用以下例子输入会报错，错误还是像我上一个说的，代码写错了
 
 [:exclamation:] 建议用dot product代替inner product
