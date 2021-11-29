@@ -26,7 +26,7 @@ RocketQA focuses on improving the dense contexts retrieval stage, and propose th
 
 ## Installation
 
-### Install python package
+### Install package
 First, install [PaddlePaddle](https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/install/pip/linux-pip.html).
 ```bash
 # GPU version:
@@ -51,25 +51,25 @@ docker pull rocketqa_docker_name
 docker run -it rocketqa_docker_name
 ```
   
-  
+[:exclamation:]
 ## API
-The RocketQA development tool supports two types of models, ERNIE-based dual encoder for answer retrieval and ERNIE-based cross encoder for answer re-ranking. And the development tool provides the following methods:
+The RocketQA development tool supports two types of models, ERNIE-based dual-encoder for answer retrieval and ERNIE-based cross-encoder for answer re-ranking. And the development tool provides the following methods:
 
 #### `rocketqa.available_models()`
 
-Returns the names of the available RocketQA models. 
+Returns the names of all available RocketQA models. 
 
-[:exclamation:] 需要对这些模型进行简单的介绍吗
+[:exclamation:] 需要对这些模型在readme里进行简单的介绍吗（比如一个list来说明或者一个表格），受限于我的背景知识，我看了一会儿才看懂每个名字代表的是什么意思
 ```
 dict_keys(['v1_marco_de', 'v1_marco_ce', 'v1_nq_de', 'v1_nq_ce', 'pair_marco_de', 'pair_nq_de', 'v2_marco_de', 'v2_marco_ce', 'v2_nq_de', 'zh_dureader_de', 'zh_dureader_ce'])
 ```
-
+[:exclamation:] 以下function需要直接链接到对应的代码吗
 #### `rocketqa.load_model(model, use_cuda=False, device_id=0, batch_size=1)`
 
-Returns the model specified by the input parameter. The RocketQA models returned by "available_models()" or your own checkpoint specified by a path are supported; both dual encoder and cross encoder can be initialized using this method. 
+Returns the model specified by the input parameter `model`. The RocketQA models returned by "available_models()" or your own checkpoint specified by a path can be initialized; both dual encoder and cross encoder can be initialized. 
 
 ---
-
+[:exclamation:] 自己的checkpoint可以用这些api吗，还是只有Dual-encoder returned by "load_model()" 可以用这些api？建议描述清楚
 Dual-encoder returned by "load_model()" supports the following methods:
 
 #### `model.encode_query(query: List[str])`
@@ -77,30 +77,33 @@ Dual-encoder returned by "load_model()" supports the following methods:
 Given a list of queries, returns their representation vectors encoded by model.
 
 #### `model.encode_para(para: List[str], )`
-
-Given a list of passages and their titles (optional), returns their representations vectors encoded by model.
+[:exclamation:] model.encode_para(para: List[str], title: List[str] (optional)) 把title是什么输入格式也写进去会不会更好
+Given a list of passages (their corresponding titles are optional), returns their representations vectors encoded by model.
 
 #### `model.matching(query: List[str], para: List[str], )`
-
-Given a list of queries and passages (and titles), returns their matching scores (dot product between two representation vectors). 
+[:exclamation:] model.matching(query: List[str], para: List[str], title: List[str] (optional)) 把title是什么输入格式也写进去会不会更好
+[:exclamation:] 这个function的代码实现是para是一个list的qp对，如果我向para只输入p的list会报错。是代码错了？还是在这里写清楚para是一个list的qp对？
+Given a list of queries and a list of their corresponding passages (their corresponding titles are optional), returns their matching scores (dot product between two representation vectors). 
 
 ---
-
+[:exclamation:] 自己的checkpoint可以用这些api吗，还是只有Cross-encoder returned by "load_model()" 可以用这些api？建议描述清楚
 Cross-encoder returned by "load_model()" supports the following method:
 
 #### `model.matching(query: List[str], para: List[str], )`
-
-Given a list of queries and passages (and titles), returns their matching scores (probability that the paragraph is the query's right answer).
+[:exclamation:] model.matching(query: List[str], para: List[str], title: List[str] (optional)) 把title是什么输入格式也写进去会不会更好
+[:exclamation:] 这个function的代码逻辑是para是一个list的qp对，如果我向para只输入一个list的p就会报错。是代码逻辑错了？还是在这里写清楚para是一个list的qp对？
+Given a list of queries and a list of their corresponding passages (their corresponding titles are optional), returns their matching scores (probability that the paragraph is the query's right answer).
   
   
 
 ## Examples
 
-With the examples below, developers can run RocketQA models or their own checkpoints. 
+A short example about how to use RocketQA. 
 
 ###  Run RocketQA Model
 To run RocketQA models, developers should set the parameter `model` in 'load_model()' method with RocketQA model name return by 'available_models()' method. 
-
+[:exclamation:] inner_products = dual_encoder.matching(query=query_list, para=para_list) 这个function 用以下例子输入会报错，错误还是像我上一个说的，代码写错了
+[:exclamation:] 建议用dot product代替inner product
 ```python
 import rocketqa
 
@@ -117,7 +120,8 @@ p_embs = dual_encoder.encode_para(para=para_list)
 inner_products = dual_encoder.matching(query=query_list, para=para_list)
 ```
 
-### Run Self-development Model
+### Run Your Own Model
+[:exclamation:] 改了这章的标题，我没有自己的model所以没有测试这一块的代码，但是matching这个function估计有相同的问题，建议检查
 To run checkpoints, developers should write a config file, and set the parameter `model` in 'load_model()' method with the path of the config file.
 
 ```python
@@ -157,7 +161,7 @@ The config file is a JSON format file.
 
 
 ## Start your QA-System
-
+[:exclamation:] 这部分描述上没有什么问题，受限于我的背景知识，我不是很理解index，search是什么意思，建议写完整这几句comments；我没有run这部分的代码，建议确认一下代码都能正常运行。
 With the examples below, developers can build own QA-System
 
 ### Running with JINA
