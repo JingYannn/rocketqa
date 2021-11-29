@@ -63,7 +63,7 @@ Returns the names of all available RocketQA models.
 ```
 dict_keys(['v1_marco_de', 'v1_marco_ce', 'v1_nq_de', 'v1_nq_ce', 'pair_marco_de', 'pair_nq_de', 'v2_marco_de', 'v2_marco_ce', 'v2_nq_de', 'zh_dureader_de', 'zh_dureader_ce'])
 ```
-[:exclamation:] 以下function需要直接链接到对应的代码吗
+[:exclamation:] 以下function需要直接链接到对应的代码吗，我觉得链接过去对应的位置是有益的，我花了一会儿去找对应的源码用于debug
 
 #### `rocketqa.load_model(model, use_cuda=False, device_id=0, batch_size=1)`
 
