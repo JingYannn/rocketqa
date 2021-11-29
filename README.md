@@ -1,3 +1,4 @@
+comments by amber: :exclamation:
 # RocketQA End-to-End QA-system Development Tool
 
 This repository provides a simple and efficient toolkit for running RocketQA models and build a Question Answering (QA) system. 
@@ -58,7 +59,7 @@ The RocketQA development tool supports two types of models, ERNIE-based dual enc
 
 Returns the names of the available RocketQA models. 
 
--[:exclamation:] comments by amber: 需要对这些模型进行简单的介绍吗
+[:exclamation:] 需要对这些模型进行简单的介绍吗
 ```
 dict_keys(['v1_marco_de', 'v1_marco_ce', 'v1_nq_de', 'v1_nq_ce', 'pair_marco_de', 'pair_nq_de', 'v2_marco_de', 'v2_marco_ce', 'v2_nq_de', 'zh_dureader_de', 'zh_dureader_ce'])
 ```
